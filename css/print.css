@@ -1,0 +1,475 @@
+/* =============================================
+   SISPAGER-GRD Print Styles
+   Official Form Reproduction: Lecciones Aprendidas
+   en el Proceso de Respuesta
+   ============================================= */
+
+/* =============================================
+   Print Media Styles
+   ============================================= */
+@media print {
+  /* --- Reset everything for print --- */
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* --- Page Settings --- */
+  @page {
+    size: A4 portrait;
+    margin: 2cm;
+  }
+
+  /* --- Body Reset --- */
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* --- Hide non-print elements --- */
+  .sidebar,
+  .sidebar-toggle,
+  .sidebar-overlay,
+  .page-header,
+  .page-actions,
+  .breadcrumb,
+  .table-toolbar,
+  .table-pagination,
+  .toast-container,
+  .modal-overlay,
+  .btn:not(.print-visible),
+  .form-actions,
+  nav,
+  header:not(.print-header),
+  footer:not(.print-footer),
+  .no-print {
+    display: none !important;
+  }
+
+  /* --- Main content resets --- */
+  .main-content {
+    margin-left: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  .app-container {
+    display: block !important;
+    grid-template-columns: none !important;
+  }
+
+  /* --- Links --- */
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  /* --- Prevent page breaks inside elements --- */
+  .print-section,
+  .print-field,
+  .print-recommendations,
+  table,
+  tr {
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  /* --- Tables for print --- */
+  table {
+    border-collapse: collapse !important;
+  }
+}
+
+/* =============================================
+   Print Format Layout
+   (Applied when .print-format wrapper is active)
+   ============================================= */
+.print-format {
+  width: 100%;
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 0;
+  background: #fff;
+  color: #000;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 11pt;
+  line-height: 1.4;
+}
+
+/* =============================================
+   Print Header
+   ============================================= */
+.print-header {
+  text-align: center;
+  padding: 10px 0;
+  border: 1px solid #000;
+  border-bottom: none;
+  background: #fff;
+}
+
+.print-header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.print-header-logo img {
+  height: 50px;
+  width: auto;
+}
+
+.print-header-title {
+  font-size: 14pt;
+  font-weight: bold;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.print-header-subtitle {
+  font-size: 11pt;
+  font-weight: normal;
+  color: #000;
+  margin-top: 4px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* =============================================
+   Print Sub-header
+   (Sub proceso + Fecha)
+   ============================================= */
+.print-subheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  border: 1px solid #000;
+  border-bottom: none;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.print-subheader-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  font-size: 10pt;
+}
+
+.print-subheader-field:not(:last-child) {
+  border-right: 1px solid #000;
+}
+
+.print-subheader-label {
+  font-weight: bold;
+  margin-right: 8px;
+  white-space: nowrap;
+  font-size: 10pt;
+}
+
+.print-subheader-value {
+  flex: 1;
+  border-bottom: 1px solid #000;
+  min-height: 18px;
+  padding-bottom: 2px;
+  font-size: 10pt;
+}
+
+/* =============================================
+   Print Section
+   ============================================= */
+.print-section {
+  border: 1px solid #000;
+  border-bottom: none;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.print-section:last-child {
+  border-bottom: 1px solid #000;
+}
+
+/* --- Section Title Row --- */
+.print-section-title {
+  background: #1E40AF;
+  color: #fff;
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid #000;
+  font-family: 'Times New Roman', Times, serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.print-section-title.secondary {
+  background: #334155;
+}
+
+/* --- Section Field / Content --- */
+.print-field {
+  padding: 8px 10px;
+  font-size: 10pt;
+  min-height: 40px;
+  line-height: 1.5;
+  font-family: 'Times New Roman', Times, serif;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.print-field.with-label {
+  display: flex;
+  gap: 8px;
+}
+
+.print-field-label {
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 10pt;
+}
+
+.print-field-value {
+  flex: 1;
+  font-size: 10pt;
+}
+
+/* --- Multiple fields in a row --- */
+.print-field-row {
+  display: flex;
+  border-bottom: 1px solid #000;
+}
+
+.print-field-row:last-child {
+  border-bottom: none;
+}
+
+.print-field-row .print-field {
+  flex: 1;
+  border-right: 1px solid #000;
+}
+
+.print-field-row .print-field:last-child {
+  border-right: none;
+}
+
+/* =============================================
+   Print Recommendations Table
+   ============================================= */
+.print-recommendations {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 10pt;
+}
+
+.print-recommendations th,
+.print-recommendations td {
+  border: 1px solid #000;
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 10pt;
+}
+
+.print-recommendations th {
+  background: #e2e8f0;
+  font-weight: bold;
+  text-align: center;
+  font-size: 9pt;
+  text-transform: uppercase;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.print-recommendations td {
+  background: #fff;
+}
+
+/* --- Print Checkboxes --- */
+.print-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10pt;
+}
+
+.print-checkbox-box {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.print-checkbox-box.checked::after {
+  content: '✓';
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* =============================================
+   Print Approval Section
+   ============================================= */
+.print-approval {
+  border: 1px solid #000;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.print-approval-row {
+  display: flex;
+  border-bottom: 1px solid #000;
+}
+
+.print-approval-row:last-child {
+  border-bottom: none;
+}
+
+.print-approval-cell {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 10pt;
+  border-right: 1px solid #000;
+}
+
+.print-approval-cell:last-child {
+  border-right: none;
+}
+
+.print-approval-label {
+  font-weight: bold;
+  font-size: 10pt;
+  margin-bottom: 4px;
+}
+
+.print-approval-value {
+  min-height: 30px;
+  border-bottom: 1px solid #000;
+  font-size: 10pt;
+  padding-top: 4px;
+}
+
+.print-approval-signature {
+  text-align: center;
+  padding: 12px 10px;
+  min-height: 60px;
+}
+
+.print-approval-signature .signature-label {
+  font-weight: bold;
+  font-size: 9pt;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.print-approval-signature .signature-line {
+  border-bottom: 1px solid #000;
+  margin: 20px auto 4px;
+  width: 80%;
+}
+
+.print-approval-signature .signature-name {
+  font-size: 9pt;
+  margin-top: 4px;
+}
+
+/* =============================================
+   Print Utility Classes
+   ============================================= */
+.print-only {
+  display: none;
+}
+
+@media print {
+  .print-only {
+    display: block !important;
+  }
+}
+
+.print-page-break {
+  page-break-before: always;
+}
+
+.print-no-break {
+  page-break-inside: avoid;
+}
+
+/* =============================================
+   Print Preview (on-screen)
+   ============================================= */
+.print-preview-container {
+  background: var(--color-bg);
+  padding: var(--space-8);
+  min-height: 100vh;
+}
+
+.print-preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 210mm;
+  margin: 0 auto var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.print-preview-toolbar .preview-title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.print-preview-wrapper {
+  max-width: 210mm;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: var(--shadow-xl);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  padding: 2cm;
+}
+
+@media print {
+  .print-preview-container {
+    background: none !important;
+    padding: 0 !important;
+  }
+
+  .print-preview-toolbar {
+    display: none !important;
+  }
+
+  .print-preview-wrapper {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+}

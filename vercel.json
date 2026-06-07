@@ -1,0 +1,35 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/api/auth/login",    "destination": "/api/auth/login" },
+    { "source": "/api/auth/logout",   "destination": "/api/auth/logout" },
+    { "source": "/api/auth/me",       "destination": "/api/auth/me" },
+    { "source": "/api/users",         "destination": "/api/users/index" },
+    { "source": "/api/users/:id",     "destination": "/api/users/[id]" },
+    { "source": "/api/records",       "destination": "/api/records/index" },
+    { "source": "/api/records/:id",   "destination": "/api/records/[id]" },
+    { "source": "/api/stats",         "destination": "/api/stats" },
+    { "source": "/((?!api/).*)",      "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}

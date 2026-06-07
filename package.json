@@ -1,0 +1,28 @@
+{
+  "name": "sispager-grd",
+  "private": true,
+  "version": "2.0.0",
+  "description": "SISPAGER-GRD: Sistema de Gestión de Lecciones Aprendidas en Gestión de Riesgos de Desastres",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:full": "vercel dev",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "bcryptjs": "^3.0.3",
+    "chart.js": "^4.4.7",
+    "dexie": "^4.0.11",
+    "html2pdf.js": "^0.14.0",
+    "jose": "^6.2.3",
+    "validator": "^13.15.35"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
